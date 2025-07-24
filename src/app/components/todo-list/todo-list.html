@@ -1,0 +1,90 @@
+<div class="body row mg-t-10 mg-l-50">
+  <div class="col-md-12">
+    <h2>Todo List</h2>
+
+
+    <p-button class="add-task-button" label="Adicionar Tarefa" icon="pi pi-plus" class="mb-2" (onClick)="addTask()"></p-button>
+    <div class="card">
+    <p-table
+        #dt
+        [value]="tasks"
+        dataKey="id"
+        [rows]="5"
+        [rowsPerPageOptions]="[5, 10, 25]"
+        [loading]="loading"
+        [paginator]="true"
+        [globalFilterFields]="['title', 'priority']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+    >
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <p-iconfield iconPosition="left" class="ml-auto">
+                    <p-inputicon>
+                        <i class="pi pi-search"></i>
+                    </p-inputicon>
+                    <input
+                        pInputText
+                        type="text"
+                        (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                        placeholder="Buscar tarefa..."
+                    />
+                </p-iconfield>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="title" style="width:35%">Título <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="priority" style="width:20%">Prioridade <p-sortIcon field="priority"></p-sortIcon></th>
+                <th pSortableColumn="completed" style="width:20%">Status <p-sortIcon field="completed"></p-sortIcon></th>
+                <th style="width:25%">Ações</th>
+            </tr>
+            <tr>
+                <th>
+                    <p-columnFilter type="text" field="title" placeholder="Filtrar por título"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter field="priority" matchMode="equals" [showMenu]="false"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="boolean" field="completed"></p-columnFilter>
+                </th>
+                <th>
+                  </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-task>
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>
+                    <p-tag [value]="task.priority" [severity]="getPrioritySeverity(task.priority)" />
+                </td>
+                <td>
+                     <i class="pi" [ngClass]="{
+                        'text-green-500 pi-check-circle': task.completed,
+                        'text-red-400 pi-times-circle': !task.completed
+                    }"></i>
+                    <span class="ml-2">{{ task.completed ? 'Concluída' : 'Pendente' }}</span>
+                </td>
+                <td>
+                    <p-button
+                      icon="pi pi-trash"
+                      styleClass="p-button-danger p-button-text"
+                      (click)="removeTask(task.id)"
+                      pTooltip="Remover Tarefa"
+                      tooltipPosition="top"
+                    />
+                    </td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4" class="text-center">Nenhuma tarefa encontrada.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+  </div>
+</div>
