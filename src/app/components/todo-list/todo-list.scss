@@ -5,9 +5,34 @@
   padding: 20px;
 }
 
-.add-task-button{
+.p-button.button-add{
+  background: linear-gradient(to right, #c529da, #6823b5);
+  color: rgb(255, 255, 255);
+  border: none;
+  margin-bottom: 10px;
+}
+
+.p-button.button-add:hover {
+  background: #610669;
+  border: none;
+}
+
+.p-button.button-delete {
+  /* Usamos 'background' para aplicar o gradiente */
+  background-color: #3d4249;
+  color: rgb(255, 255, 255);
+  border-color: purple;
+  margin-left: 10px;
+}
+
+/* Opcional: Estilo para quando o mouse passa por cima */
+.p-button.button-delete:hover {
+  background: linear-gradient(to right, #c529da, #6823b5);
+  border: none;
+}
+
+.toolbar {
   margin-bottom: 20px;
-  background-color: black
 }
 
 .p-tag.p-tag-warning {

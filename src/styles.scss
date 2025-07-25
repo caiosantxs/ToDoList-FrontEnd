@@ -31,3 +31,9 @@ html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.p-paginator .p-paginator-page-selected {
+background: linear-gradient(to right, #c529da, #6823b5) !important;
+color: #ffffff !important;
+}
