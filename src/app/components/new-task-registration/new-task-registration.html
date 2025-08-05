@@ -1,0 +1,56 @@
+<div class="flex flex-col gap-4">
+  <span class="p-text-secondary block mb-4"
+    >Preencha os detalhes da nova tarefa.</span
+  >
+
+  <div class="campo-título">
+    <label for="title" class="font-semibold w-24">Title</label>
+    <input
+      pInputText
+      id="title"
+      class="textarea-titulo"
+      autocomplete="off"
+      [(ngModel)]="taskParaAdicionar.title"
+    />
+  </div>
+
+  <div class="campo-descrição">
+    <label for="description" class="font-semibold w-24">Description</label>
+    <textarea
+      pInputTextarea
+      id="description"
+      class="flex-auto"
+      autocomplete="off"
+      [(ngModel)]="taskParaAdicionar.description"
+    ></textarea>
+  </div>
+
+  <div class="campo-prioridade">
+    <label class="font-semibold w-24">Priority</label>
+    <p-selectButton
+      class="button-prioridade"
+      [options]="priorities"
+      [(ngModel)]="taskParaAdicionar.priority"
+      optionLabel="label"
+      optionValue="value"
+    >
+    </p-selectButton>
+  </div>
+
+  <div class="flex items-center gap-4 mb-8">
+    <label for="dueDate" class="font-semibold w-24">Due Date</label>
+    <p-datepicker [(ngModel)]="taskParaAdicionar.dueDate" [inline]="true"/>
+  </div>
+
+  <div class="buttons">
+    <button
+    pButton
+    label="Save"
+    class="button-save"
+    (click)="save()"
+    [disabled]="!taskParaAdicionar.title"
+    >
+    </button>
+    <p-button class="button" label="Cancel" severity="secondary" (click)="cancel()" />
+  </div>
+</div>

@@ -1,0 +1,50 @@
+.campo-título {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.campo-descrição {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.campo-prioridade {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label {
+  font: semi-bold;
+  width: 24px;
+  margin-right: 10px;
+}
+
+.textarea-titulo {
+  margin-left: 40px;
+  width: 1000px;
+}
+
+.button-prioridade {
+  margin-left: 40px;
+}
+
+textarea {
+  margin-left: 40px;
+  width: 1000px;
+  height: 80px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.p-button.button-save{
+  background: linear-gradient(to right, #c529da, #6823b5);
+  color: rgb(255, 255, 255);
+  border: none;
+  margin-right: 10px;
+}
