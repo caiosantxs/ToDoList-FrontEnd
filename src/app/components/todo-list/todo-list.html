@@ -8,9 +8,17 @@
       label="Add New Task"
       icon="pi pi-plus"
       class="button-add"
-      (click)="novaTarefa()"
+      (click)="abrirDialogNovaTarefa()"
     ></button>
 
+    <p-dialog header="Add new task" [modal]="true" [(visible)]="visible" [style]="{ width: '700px', height: '700px' }">
+    <app-new-task-registration
+    [priorities]="priorities"
+        (onTaskSave)="adicionarNovaTarefa($event)"
+        (onCancel)="fecharDialog()">
+    >
+    </app-new-task-registration>
+    </p-dialog>
 
     <div class="card">
       <p-table
@@ -72,8 +80,8 @@
               <i
                 class="pi"
                 [ngClass]="{
-                  'text-green-500 pi-check-circle': task.completed,
-                  'text-red-400 pi-times-circle': !task.completed
+                  'text-green-500': task.completed,
+                  'text-red-400': !task.completed
                 }"
               ></i>
               <span class="ml-2">{{
